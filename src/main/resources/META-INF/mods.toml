@@ -1,11 +1,11 @@
 modLoader="javafml"
 loaderVersion="[31,)"
-#issueTrackerURL=""
+issueTrackerURL="https://github.com/PieKing1215/StartupQoL/issues"
 [[mods]]
 modId="startupqol"
 version="0.1.0"
 displayName="Startup QoL"
-#displayURL=""
+displayURL="https://github.com/PieKing1215/StartupQoL"
 logoFile="logo.png"
 #credits=""
 authors="PieKing1215"
