@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+#issueTrackerURL=""
+[[mods]]
+modId="startupqol"
+version="0.1.0"
+displayName="Startup QoL"
+#displayURL=""
+logoFile="logo.png"
+#credits=""
+authors="PieKing1215"
+description='''
+Prevents the game from going fullscreen until the main menu.
+Also shows the total startup time on the main menu.'''
+
+[[dependencies.startupqol]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.startupqol]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
