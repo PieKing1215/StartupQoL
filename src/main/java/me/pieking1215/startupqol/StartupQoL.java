@@ -57,8 +57,11 @@ public class StartupQoL {
             long minutes = (startupTime / 1000) / 60;
             long seconds = (startupTime / 1000) % 60;
 
+            float guiScale = (float)Minecraft.getInstance().getMainWindow().getGuiScaleFactor();
+            if(guiScale <= 0) guiScale = 1; // failsafe to prevent divide by 0
+
             String txt = "Startup took " + minutes + "m " + seconds + "s.";
-            Minecraft.getInstance().fontRenderer.drawStringWithShadow(txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / Minecraft.getInstance().gameSettings.guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / Minecraft.getInstance().gameSettings.guiScale - 16, Color.YELLOW.getRGB());
+            Minecraft.getInstance().fontRenderer.drawStringWithShadow(txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / guiScale - 16, Color.YELLOW.getRGB());
         }else if(hasBeenMainMenu){
             hasLeftMainMenu = true;
         }
