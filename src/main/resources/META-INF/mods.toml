@@ -1,5 +1,6 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
+license="GPL v3.0"
 issueTrackerURL="https://github.com/PieKing1215/StartupQoL/issues"
 [[mods]]
 modId="startupqol"
@@ -16,12 +17,12 @@ Also shows the total startup time on the main menu.'''
 [[dependencies.startupqol]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.startupqol]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.1]"
     ordering="NONE"
     side="BOTH"

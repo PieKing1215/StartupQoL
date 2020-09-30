@@ -1,5 +1,6 @@
 package me.pieking1215.startupqol;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,7 +62,7 @@ public class StartupQoL {
             if(guiScale <= 0) guiScale = 1; // failsafe to prevent divide by 0
 
             String txt = "Startup took " + minutes + "m " + seconds + "s.";
-            Minecraft.getInstance().fontRenderer.drawStringWithShadow(txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / guiScale - 16, Color.YELLOW.getRGB());
+            Minecraft.getInstance().fontRenderer.drawStringWithShadow(new MatrixStack(), txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / guiScale - 16, Color.YELLOW.getRGB());
         }else if(hasBeenMainMenu){
             hasLeftMainMenu = true;
         }
