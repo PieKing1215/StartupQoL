@@ -76,7 +76,7 @@ minecraft {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.16.2-33.0.61'
+    minecraft 'net.minecraftforge:forge:1.16.3-34.1.1'
 
 }
 
