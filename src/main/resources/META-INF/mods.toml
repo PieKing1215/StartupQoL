@@ -11,8 +11,7 @@ logoFile="logo.png"
 #credits=""
 authors="PieKing1215"
 description='''
-Prevents the game from going fullscreen until the main menu.
-Also shows the total startup time on the main menu.'''
+Adds some quality of life features related to game startup.'''
 
 [[dependencies.startupqol]]
     modId="forge"
@@ -23,6 +22,6 @@ Also shows the total startup time on the main menu.'''
 [[dependencies.startupqol]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3,1.16.4]"
+    versionRange="[1.16.3,1.16.4,1.16.5]"
     ordering="NONE"
     side="BOTH"
