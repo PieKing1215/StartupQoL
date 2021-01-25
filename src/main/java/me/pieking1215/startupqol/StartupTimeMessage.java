@@ -84,6 +84,6 @@ public class StartupTimeMessage extends StartupMessageManager.Message {
 
     @Override
     public float[] getTypeColour() {
-        return new float[]{1f, 1f, 0f, 1f};
+        return new float[]{0.75f, 0.75f, 0f, 1f};
     }
 }

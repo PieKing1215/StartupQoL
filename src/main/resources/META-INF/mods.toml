@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[34,)"
+loaderVersion="[31,)"
 license="GPL v3.0"
 issueTrackerURL="https://github.com/PieKing1215/StartupQoL/issues"
 [[mods]]
@@ -16,12 +16,12 @@ Adds some quality of life features related to game startup.'''
 [[dependencies.startupqol]]
     modId="forge"
     mandatory=true
-    versionRange="[34,)"
+    versionRange="[31,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.startupqol]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3,1.16.4,1.16.5]"
+    versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"
