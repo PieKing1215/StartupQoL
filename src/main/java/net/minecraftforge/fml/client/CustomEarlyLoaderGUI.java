@@ -4,6 +4,9 @@ import net.minecraft.client.MainWindow;
 
 import java.lang.management.ManagementFactory;
 
+/**
+ *  Unused because it can't display as early as the custom startup message type
+ */
 public class CustomEarlyLoaderGUI extends EarlyLoaderGUI {
 
     MainWindow wind;
