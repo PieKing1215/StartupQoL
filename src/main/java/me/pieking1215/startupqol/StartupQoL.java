@@ -59,7 +59,7 @@ public class StartupQoL {
 
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent event) {
-        if (event.getGui() instanceof MainMenuScreen && !triggered) {
+        if (!triggered && event.getGui() instanceof MainMenuScreen) {
             triggered = true;
 
             Minecraft.getInstance().gameSettings.fullscreen = trueFullscreen;
