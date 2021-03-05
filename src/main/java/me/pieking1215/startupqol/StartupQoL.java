@@ -44,6 +44,7 @@ public class StartupQoL {
 
     static {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
+            StartupQoLConfig.loadConfig();
             expectedTime = StartupQoLConfig.getTimeEstimate();
         });
     }
@@ -87,7 +88,7 @@ public class StartupQoL {
             if(guiScale <= 0) guiScale = 1; // failsafe to prevent divide by 0
 
             String txt = "Startup took " + minutes + "m " + seconds + "s.";
-            Minecraft.getInstance().fontRenderer.drawStringWithShadow(new MatrixStack(), txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / guiScale - 16, Color.YELLOW.getRGB());
+            Minecraft.getInstance().fontRenderer.drawStringWithShadow(new MatrixStack(), txt, Minecraft.getInstance().getMainWindow().getWidth()/2 / guiScale - Minecraft.getInstance().fontRenderer.getStringWidth(txt)/2, Minecraft.getInstance().getMainWindow().getHeight() / guiScale - 20, Color.YELLOW.getRGB());
         }else if(hasBeenMainMenu){
             hasLeftMainMenu = true;
         }
