@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "me.pieking1215.startupqol.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "startupqol.refmap.json",
+  "mixins": [],
+  "client": [
+    "client.MixinEarlyLoaderGUI",
+    "client.MixinResourceLoadProgressGui",
+    "client.MixinMainMenuScreen"
+  ],
+  "minVersion": "0.8"
+}

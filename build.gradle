@@ -4,11 +4,13 @@ buildscript {
             name = "forge"
             url = "https://files.minecraftforge.net/maven"
         }
+        maven { url='https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
@@ -25,12 +27,17 @@ repositories {
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
-version = '1.16.4-0.2.0'
+version = '1.16.5-0.3.0'
 group = 'me.pieking1215.startupqol'
 archivesBaseName = 'StartupQoL'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+mixin {
+    add sourceSets.main, "startupqol.refmap.json"
+}
 
 minecraft {
     mappings channel: 'snapshot', version: '20200723-1.16.1'
@@ -38,8 +45,12 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
+            args "-mixin.config=startupqol.mixins.json"
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.debug', 'true'
+            property 'mixin.debug.export', 'true'
+
 
             mods {
                 startupqol {
@@ -76,7 +87,7 @@ minecraft {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.37'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.0.45'
 
 }
 
@@ -89,7 +100,8 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"pieking1215",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "startupqol.mixins.json"
         ])
     }
 }
