@@ -44,34 +44,7 @@ public class StartupQoL {
 
     static {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
-            // try to load previous times
-            try {
-                File dotMinecraft = FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).toFile().getParentFile();
-                File f = new File(dotMinecraft, "config/startupQoL/startup_times.json");
-                f.getParentFile().mkdirs();
-                if(!f.exists()) f.createNewFile();
-
-                JsonReader jr = new JsonReader(new FileReader(f));
-                JsonElement jp = new JsonParser().parse(jr);
-                if(jp.isJsonObject()) {
-                    JsonObject obj = jp.getAsJsonObject();
-                    if(obj.has("times") && obj.get("times").isJsonArray()){
-                        JsonArray arr = obj.get("times").getAsJsonArray();
-                        if(arr.size() > 0) {
-                            long sum = 0;
-                            for (int i = 0; i < arr.size(); i++) {
-                                sum += arr.get(i).getAsLong();
-                            }
-                            sum /= arr.size();
-                            expectedTime = sum;
-                        }
-                    }
-                }
-                jr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            expectedTime = StartupQoLConfig.getTimeEstimate();
         });
     }
 
@@ -99,60 +72,13 @@ public class StartupQoL {
 
             doneTime = startupTime;
 
-            try {
-                File dotMinecraft = FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).toFile().getParentFile();
-                File f = new File(dotMinecraft, "config/startupQoL/startup_times.json");
-                f.getParentFile().mkdirs();
-                if(!f.exists()) f.createNewFile();
-
-                long[] times = new long[0];
-                JsonReader jr = new JsonReader(new FileReader(f));
-                JsonElement jp = new JsonParser().parse(jr);
-                if(jp.isJsonObject()) {
-                    JsonObject obj = jp.getAsJsonObject();
-                    if(obj.has("times") && obj.get("times").isJsonArray()){
-                        JsonArray arr = obj.get("times").getAsJsonArray();
-                        if(arr.size() > 0) {
-                            times = new long[arr.size()];
-                            for (int i = 0; i < arr.size(); i++) {
-                                times[i] = arr.get(i).getAsLong();
-                            }
-                        }
-                    }
-                }
-                jr.close();
-
-                JsonWriter jw = new JsonWriter(new FileWriter(f));
-                jw.setIndent("  ");
-                jw.beginObject();
-
-                jw.name("times");
-                jw.beginArray();
-                // only keep 3 times
-                if(times.length > 2){
-                    for (int i = times.length - 2; i < times.length; i++) {
-                        jw.value(times[i]);
-                    }
-                }else {
-                    for (int i = 0; i < times.length; i++) {
-                        jw.value(times[i]);
-                    }
-                }
-                jw.value(startupTime);
-                jw.endArray();
-
-                jw.endObject();
-                jw.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            StartupQoLConfig.addStartupTime(startupTime);
         }
     }
 
     @SubscribeEvent
     public void onGuiDraw(GuiScreenEvent.DrawScreenEvent event){
-        if(event.getGui() instanceof MainMenuScreen && !hasLeftMainMenu){
+        if(!hasLeftMainMenu && event.getGui() instanceof MainMenuScreen){
             hasBeenMainMenu = true;
             long minutes = (startupTime / 1000) / 60;
             long seconds = (startupTime / 1000) % 60;
