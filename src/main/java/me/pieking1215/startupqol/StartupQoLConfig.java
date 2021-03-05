@@ -19,7 +19,7 @@ public class StartupQoLConfig {
     // the initial values here are used as defaults
     public static float fadeOutTime = 1000.0f;
     public static float fadeInTime = 500.0f;
-    public static boolean timerOnTop = false;
+    public static boolean timerOnTop = true;
 
     public static final File DOT_MINECRAFT = FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).toFile().getParentFile();
     public static final File TIMES_FILE = new File(DOT_MINECRAFT, "config/startupQoL/startup_times.json");
