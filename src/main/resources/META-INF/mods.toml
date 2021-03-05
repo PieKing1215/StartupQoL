@@ -4,7 +4,7 @@ license="GPL v3.0"
 issueTrackerURL="https://github.com/PieKing1215/StartupQoL/issues"
 [[mods]]
 modId="startupqol"
-version="0.2.0"
+version="0.3.0"
 displayName="Startup QoL"
 displayURL="https://github.com/PieKing1215/StartupQoL"
 logoFile="logo.png"
