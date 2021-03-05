@@ -45,11 +45,11 @@ public abstract class MixinEarlyLoaderGUI {
     }
 
     /**
-     * Move the bottom boundary for message lines up a bit
+     * Move the bottom boundary for message lines up a bit (if timer on bottom)
      */
     @ModifyConstant(method = "renderMessages", constant = @Constant(intValue = 15), remap = false)
     private int modifyBottomOffset(int orig){
-        return 20;
+        return StartupQoLConfig.timerOnTop ? orig : 20;
     }
 
     /**
