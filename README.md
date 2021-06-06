@@ -5,7 +5,7 @@
 </h1>
 
 ### Minecraft Forge mod that adds a couple of quality-of-life features to startup. 
-
+test
 Prevents the game from going fullscreen until after it's completely done loading.<br>
 Also displays the total startup time on the main menu.<br>
 Also shows a timer while the game is loading along with a load time estimate based on the last 3 launches.
